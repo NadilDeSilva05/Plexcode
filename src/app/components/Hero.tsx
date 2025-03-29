@@ -43,13 +43,33 @@ const Hero = () => {
     };
   }, []);
 
+  const smoothScroll = () => {
+    const scrollAmount = window.innerHeight * 1; // Amount to scroll (30% of viewport height)
+    const scrollDuration = 1200; // Total scroll time in milliseconds (1.2 seconds)
+    const startTime = performance.now();
+    const startScroll = window.scrollY;
+
+    const animateScroll = (timestamp: number) => {
+      const progress = Math.min((timestamp - startTime) / scrollDuration, 1);
+      const scrollPosition = startScroll + progress * scrollAmount;
+
+      window.scrollTo(0, scrollPosition);
+
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+        requestAnimationFrame(animateScroll);
+  };
+
   return (
     <section
       ref={heroRef}
       className="relative h-screen flex items-center justify-center text-center px-6 bg-cover bg-center overflow-hidden"
       style={{
         backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/heroSection/heroSection.jpg')",
-        backgroundPosition: "50% 45%"
+        backgroundPosition: "50% 45%",
       }}
     >
       {/* Minimalist grid overlay */}
@@ -58,19 +78,18 @@ const Hero = () => {
       </div>
 
       <div className="max-w-6xl relative z-10">
-      <h1 
-        ref={headingRef}
-        className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] to-[#5b5957] mb-6 tracking-tight animate-fadeIn"
+        <h1 
+          ref={headingRef}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] to-[#5b5957] mb-6 tracking-tight animate-fadeIn"
         >
-        PLEXCODE
+          PLEXCODE
         </h1>
 
-        
         <p 
           ref={subtextRef}
           className="mt-6 text-lg sm:text-xl md:text-xl font-medium text-gray-300 max-w-3xl mx-auto min-h-[3rem] flex justify-center items-center"
           style={{
-            textShadow: '0 2px 4px rgba(0,0,0,0.5)'
+            textShadow: '0 2px 4px rgba(0,0,0,0.5)',
           }}
         >
           {typedText}
@@ -83,7 +102,10 @@ const Hero = () => {
       </div>
 
       {/* Scrolling indicator with Arrow Icon */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <div 
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer" 
+        onClick={smoothScroll}
+      >
         <ArrowDownIcon className="w-6 h-6 text-[#b68e17]" />
       </div>
     </section>
