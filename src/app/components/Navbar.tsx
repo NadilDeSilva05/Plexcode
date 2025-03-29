@@ -72,7 +72,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <motion.button
-          className="md:hidden p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+          className="md:hidden p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 "
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -93,7 +93,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-black/95 backdrop-blur-sm"
+            className="md:hidden overflow-hidden bg-black/95 backdrop-blur-sm mt-1 "
           >
             <div className="flex flex-col items-center space-y-6 py-6 px-4">
               {navItems.map((item, index) => (

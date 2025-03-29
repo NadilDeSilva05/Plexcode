@@ -65,13 +65,16 @@ const Hero = () => {
 
   return (
     <section
-      ref={heroRef}
-      className="relative h-screen flex items-center justify-center text-center px-6 bg-cover bg-center overflow-hidden"
-      style={{
+    ref={heroRef}
+    className="relative h-screen flex items-center justify-center text-center px-6 bg-cover bg-center overflow-hidden"
+    style={{
         backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/heroSection/heroSection.jpg')",
         backgroundPosition: "50% 45%",
-      }}
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed", // Fixes background on scroll
+    }}
     >
+
       {/* Minimalist grid overlay */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute inset-0 bg-grid-white/[0.05] [mask-image:linear-gradient(0deg,transparent,black)]"></div>
