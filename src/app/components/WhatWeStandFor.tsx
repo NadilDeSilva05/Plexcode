@@ -23,32 +23,32 @@ export default function WhatWeStandFor() {
           </h2>
 
           <div className="mt-6 space-y-4"> {/* Reduced spacing */}
-  {Object.keys(images).map((title) => (
-    <div
-      key={title}
-      className={`pl-4 py-2 cursor-pointer transition-all duration-300 ${
-        selected === title ? "border-l-8 border-black" : "border-l-4 border-gray-300"
-      }`}
-      onClick={() => setSelected(title)}
-    >
-      <h3
-        className={`text-base font-semibold ${
-          selected === title ? "text-black" : "text-gray-700"
-        }`} // Reduced font size
-      >
-        {title}
-      </h3>
-      <p className="text-sm text-gray-500"> {/* Reduced paragraph size */}
-        {title === "Creativity Without Limits" &&
-          "We push boundaries to create work that stands out."}
-        {title === "Strategic Excellence" &&
-          "Every idea is rooted in a deep understanding of your goals and audience."}
-        {title === "Client Collaboration" &&
-          "Your vision is at the heart of everything we do."}
-      </p>
-    </div>
-  ))}
-</div>
+            {Object.keys(images).map((title) => (
+                <div
+                key={title}
+                className={`pl-4 py-2 cursor-pointer transition-all duration-300 ${
+                    selected === title ? "border-l-8 border-black" : "border-l-4 border-gray-300"
+                }`}
+                onClick={() => setSelected(title)}
+                >
+                <h3
+                    className={`text-base font-semibold ${
+                    selected === title ? "text-black" : "text-gray-700"
+                    }`} // Reduced font size
+                >
+                    {title}
+                </h3>
+                <p className="text-sm text-gray-500"> {/* Reduced paragraph size */}
+                    {title === "Creativity Without Limits" &&
+                    "We push boundaries to create work that stands out."}
+                    {title === "Strategic Excellence" &&
+                    "Every idea is rooted in a deep understanding of your goals and audience."}
+                    {title === "Client Collaboration" &&
+                    "Your vision is at the heart of everything we do."}
+                </p>
+                </div>
+            ))}
+            </div>
 
         </div>
 
