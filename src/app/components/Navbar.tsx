@@ -83,7 +83,7 @@ const Navbar = () => {
             <Menu size={28} className="text-gray-500" />
           )}
         </motion.button>
-      </div>
+      </div><br/>
 
       {/* Mobile Menu */}
       <AnimatePresence>
