@@ -7,6 +7,10 @@ import Hero from "../components/Hero";
 import InnovationSections from '../components/InnovationSection';
 import WhoWeAre from '../components/WhoWeAre';
 import WhatWeStandFor from '../components/WhatWeStandFor';
+import Banner from '../components/Banner';
+import ServicesSection from "../components/ServicesSection";
+
+
 
 
 
@@ -105,6 +109,9 @@ export default function Home() {
             <InnovationSections />
             <WhoWeAre />
             <WhatWeStandFor />
+            <Banner/>
+            <ServicesSection />
+
 
             
             </div>
