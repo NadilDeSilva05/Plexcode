@@ -3,21 +3,20 @@ import Image from "next/image";
 
 export default function WhoWeAre() {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[60vh] items-center bg-gray-100 text-black px-6 md:px-12 lg:px-20 gap-8 py-12">
+    <section className="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[60vh] items-center bg-gray-100 text-black px-6 md:px-12 lg:px-20 gap-8 py-12 bg-cover bg-center" style={{ backgroundImage: 'url(/images/otherImage/pngtree-business-earth-pattern-building-white-gray-technology-banner-image_804189.jpg)', backgroundAttachment: 'fixed' }}>
       
       {/* Left Side - Image Section */}
       <div className="flex justify-center items-center">
         <div className="relative w-40 h-40 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-black shadow-md p-6">
-            <Image
+          <Image
             src="/images/otherImage/idea.png"
             alt="Idea"
             width={320}
             height={320}
             objectFit="cover"
-            />
+          />
         </div>
-        </div>
-
+      </div>
 
       {/* Right Side - Text Section */}
       <div className="text-center md:text-left space-y-4">

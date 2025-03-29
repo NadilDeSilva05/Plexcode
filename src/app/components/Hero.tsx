@@ -44,7 +44,7 @@ const Hero = () => {
   }, []);
 
   const smoothScroll = () => {
-    const scrollAmount = window.innerHeight * 1; // Amount to scroll (30% of viewport height)
+    const scrollAmount = window.innerHeight * 0.95; // Amount to scroll (30% of viewport height)
     const scrollDuration = 1200; // Total scroll time in milliseconds (1.2 seconds)
     const startTime = performance.now();
     const startScroll = window.scrollY;
@@ -65,28 +65,35 @@ const Hero = () => {
 
   return (
     <section
-    ref={heroRef}
-    className="relative h-screen flex items-center justify-center text-center px-6 bg-cover bg-center overflow-hidden"
-    style={{
-        backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/heroSection/heroSection.jpg')",
-        backgroundPosition: "50% 45%",
+      ref={heroRef}
+      className="relative h-screen flex items-center justify-center text-center px-6 overflow-hidden"
+      style={{
+        backgroundImage: `
+          linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(10, 10, 10, 0.8) 100%),
+          url('/images/heroSection/heroSection.jpg')
+        `,
+        backgroundPosition: "center",
         backgroundSize: "cover",
-        backgroundAttachment: "fixed", // Fixes background on scroll
-    }}
+        backgroundAttachment: "fixed",
+      }}
     >
-
-      {/* Minimalist grid overlay */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute inset-0 bg-grid-white/[0.05] [mask-image:linear-gradient(0deg,transparent,black)]"></div>
+      {/* Animated grid overlay */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black)]"></div>
       </div>
 
+      {/* Glowing accent elements */}
+      <div className="absolute top-1/4 -left-20 w-40 h-40 rounded-full bg-[#b68e17] opacity-20 blur-3xl"></div>
+      <div className="absolute bottom-1/4 -right-20 w-60 h-60 rounded-full bg-[#c6a237] opacity-15 blur-3xl"></div>
+
       <div className="max-w-6xl relative z-10">
-        <h1 
-          ref={headingRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] to-[#5b5957] mb-6 tracking-tight animate-fadeIn"
+      <h1 
+        ref={headingRef}
+        className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] to-[#5b5957] mb-6 tracking-widest animate-fadeIn"
         >
-          PLEXCODE
+        PlexCode
         </h1>
+
 
         <p 
           ref={subtextRef}
@@ -104,13 +111,28 @@ const Hero = () => {
         <div className="absolute -bottom-20 left-0 right-0 h-40 "></div>
       </div>
 
-      {/* Scrolling indicator with Arrow Icon */}
+      {/* Scrolling indicator */}
       <div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer" 
-        onClick={smoothScroll}
-      >
-        <ArrowDownIcon className="w-6 h-6 text-[#b68e17]" />
-      </div>
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer group"
+            onClick={smoothScroll}
+            >
+            <div className="animate-bounce flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full border-2 border-[#b68e17] flex justify-center items-center group-hover:border-[#d1a53e] transition-colors">
+                <svg
+                    className="w-6 h-6 text-[#b68e17] group-hover:text-[#d1a53e] transition-colors"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+                </div>
+                <span className="text-xs text-gray-400 mt-2 tracking-wider">SCROLL</span>
+            </div>
+            </div>
+
     </section>
   );
 };
