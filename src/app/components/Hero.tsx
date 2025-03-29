@@ -17,15 +17,6 @@ const Hero = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Aggressive entrance animation
-    gsap.from(headingRef.current, {
-      duration: 1.2,
-      y: 100,
-      opacity: 0,
-      ease: "power4.out",
-      delay: 0.3
-    });
-
     // Continuous subtle pulse animation
     gsap.to(heroRef.current, {
       backgroundPosition: "50% 55%",
@@ -46,7 +37,7 @@ const Hero = () => {
           clearInterval(typingInterval);
         }
       }, typingSpeed);
-    }, 1800); // Start after other animations
+    }, 1000); // Start after other animations
 
     return () => {
       clearTimeout(typingTimer);
@@ -68,13 +59,13 @@ const Hero = () => {
       </div>
 
       <div className="max-w-6xl relative z-10">
-        <h1 
-          ref={headingRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] to-[#5b5957] mb-6 tracking-tight"
-
+      <h1 
+        ref={headingRef}
+        className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] to-[#5b5957] mb-6 tracking-tight animate-fadeIn"
         >
-          PLEX<span className="text-white">CODE</span>
+        PLEXCODE
         </h1>
+
         
         <p 
           ref={subtextRef}
