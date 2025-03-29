@@ -34,7 +34,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 py-2 shadow-lg' : 'bg-tranparent py-4'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 py-2 shadow-lg' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo with animation */}
         <motion.div
@@ -50,7 +50,7 @@ const Navbar = () => {
         </motion.div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6">
           {navItems.map((item, index) => (
             <motion.div
               key={item.path}
@@ -65,7 +65,6 @@ const Navbar = () => {
                 className={`text-gray-500 hover:text-white transition-colors duration-200 font-medium text-sm relative group ${inter.className}`}
               >
                 {item.name}
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 "></span>
               </Link>
             </motion.div>
           ))}
@@ -84,7 +83,7 @@ const Navbar = () => {
             <Menu size={28} className="text-gray-500" />
           )}
         </motion.button>
-      </div><br/>
+      </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
