@@ -6,6 +6,8 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import InnovationSections from '../components/InnovationSection';
 import WhoWeAre from '../components/WhoWeAre';
+import WhatWeStandFor from '../components/WhatWeStandFor';
+
 
 
 export default function Home() {
@@ -102,6 +104,8 @@ export default function Home() {
             <Hero />
             <InnovationSections />
             <WhoWeAre />
+            <WhatWeStandFor />
+
             
             </div>
 
