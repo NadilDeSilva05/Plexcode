@@ -5,6 +5,8 @@ import { useState, useEffect, useRef } from 'react';
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import InnovationSections from '../components/InnovationSection';
+import WhoWeAre from '../components/WhoWeAre';
+
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -95,11 +97,14 @@ export default function Home() {
           </div>
         </div>
       ) : (
-        <div className="animate-fade-in">
-          <Navbar />
-          <Hero />
-          <InnovationSections />
-        </div>
+            <div className="mainContent delay-500">
+            <Navbar />
+            <Hero />
+            <InnovationSections />
+            <WhoWeAre />
+            
+            </div>
+
       )}
 
       <style jsx global>{`
