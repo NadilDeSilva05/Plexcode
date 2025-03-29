@@ -41,7 +41,7 @@ const ServicesSection = () => {
           </div>
           <div>
             <p className="text-2xl font-bold">30k</p>
-            <p className="text-gray-500">Coffee Cups</p>
+            <p className="text-gray-500">Coffee Cups </p>
           </div>
         </div>
       </div>
