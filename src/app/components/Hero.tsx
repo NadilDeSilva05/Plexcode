@@ -70,18 +70,15 @@ const Hero = () => {
       <div className="max-w-6xl relative z-10">
         <h1 
           ref={headingRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#957411] to-[#9c7a1d] mb-6 tracking-tight"
-          style={{
-            textShadow: '0 0 15px rgba(182, 142, 23, 0.5)',
-            fontFamily: "'Bebas Neue', sans-serif"
-          }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] to-[#5b5957] mb-6 tracking-tight"
+
         >
           PLEX<span className="text-white">CODE</span>
         </h1>
         
         <p 
           ref={subtextRef}
-          className="mt-6 text-lg sm:text-xl md:text-2xl font-medium text-gray-300 max-w-3xl mx-auto min-h-[3rem] flex justify-center items-center"
+          className="mt-6 text-lg sm:text-xl md:text-xl font-medium text-gray-300 max-w-3xl mx-auto min-h-[3rem] flex justify-center items-center"
           style={{
             textShadow: '0 2px 4px rgba(0,0,0,0.5)'
           }}
