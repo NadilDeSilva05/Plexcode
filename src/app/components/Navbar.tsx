@@ -1,51 +1,125 @@
 'use client';
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Inter, Montserrat } from 'next/font/google';
+
+// Define your fonts
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const montserrat = Montserrat({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-montserrat'
+});
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { name: "HOME", path: "/" },
+    { name: "ABOUT", path: "/about" },
+    { name: "SERVICES", path: "/services" },
+    { name: "CONTACT", path: "/contact" },
+  ];
 
   return (
-    <nav className="bg-opacity-90 bg-black text-white p-4 shadow-md fixed top-0 left-0 w-full z-10">
-      <div className="container mx-auto flex justify-between items-center">
-        {/* Company Name aligned left */}
-        <h1 className="text-2xl font-bold">plexCode</h1>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 py-2 shadow-lg' : 'bg-tranparent py-4'}`}>
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        {/* Logo with animation */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Link href="/">
+            <h1 className={`text-2xl md:text-3xl font-bold bg-gradient-to-r from-white to-gray-700 bg-clip-text text-transparent ${montserrat.className}`}>
+              plexCode
+            </h1>
+          </Link>
+        </motion.div>
 
-        {/* Right side links */}
-        <div className="hidden md:flex space-x-6 ml-auto">
-          <Link href="/" className="hover:text-gray-300">Home</Link>
-          <Link href="/about" className="hover:text-gray-300">About</Link>
-          <Link href="/services" className="hover:text-gray-300">Services</Link>
-          <Link href="/contact" className="hover:text-gray-300">Contact</Link>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-8">
+          {navItems.map((item, index) => (
+            <motion.div
+              key={item.path}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 * index }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link 
+                href={item.path} 
+                className={`text-gray-500 hover:text-white transition-colors duration-200 font-medium text-sm relative group ${inter.className}`}
+              >
+                {item.name}
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 "></span>
+              </Link>
+            </motion.div>
+          ))}
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden"
+        <motion.button
+          className="md:hidden p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
           onClick={() => setIsOpen(!isOpen)}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
+          {isOpen ? (
+            <X size={28} className="text-gray-500" />
+          ) : (
+            <Menu size={28} className="text-gray-500" />
+          )}
+        </motion.button>
+      </div><br/>
 
-      {/* Mobile Menu with Framer Motion for animation */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden flex flex-col items-center mt-2 space-y-3  p-4"
-        >
-          <Link href="/" className="hover:text-gray-300">Home</Link>
-          <Link href="/about" className="hover:text-gray-300">About</Link>
-          <Link href="/services" className="hover:text-gray-300">Services</Link>
-          <Link href="/contact" className="hover:text-gray-300">Contact</Link>
-        </motion.div>
-      )}
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden overflow-hidden bg-black/95 backdrop-blur-sm"
+          >
+            <div className="flex flex-col items-center space-y-6 py-6 px-4">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.path}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 * index }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full text-center"
+                >
+                  <Link 
+                    href={item.path} 
+                    className={`block py-3 text-sm text-gray-500 hover:text-white transition-colors duration-200 font-medium ${inter.className}`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
