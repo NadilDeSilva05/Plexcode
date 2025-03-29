@@ -9,7 +9,6 @@ const Hero = () => {
   const heroRef = useRef(null);
   const headingRef = useRef(null);
   const subtextRef = useRef(null);
-  const ctaRef = useRef(null);
   const [typedText, setTypedText] = useState('');
   const fullText = "WE BUILD DIGITAL WARRIORS FOR THE TECH BATTLEGROUND";
   const typingSpeed = 30; // milliseconds per character

@@ -1,7 +1,7 @@
 // pages/index.js
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect,  } from 'react';
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import InnovationSections from '../components/InnovationSection';
@@ -11,7 +11,7 @@ export default function Home() {
   const [visibleText, setVisibleText] = useState("");
   const [visibleLines, setVisibleLines] = useState<{ text: string; bold?: boolean }[]>([]);
   const [showDomain, setShowDomain] = useState(false);
-  const containerRef = useRef(null);
+ 
 
   useEffect(() => {
     const textSequence = [
@@ -28,7 +28,7 @@ export default function Home() {
     });
 
     // Mobile version (stacked lines)
-    textSequence.forEach(({ text, delay, bold }, index) => {
+    textSequence.forEach(({ text, delay, bold }, ) => {
       setTimeout(() => {
         setVisibleLines(prev => [...prev, { text: text.trim(), bold }]);
       }, delay);
