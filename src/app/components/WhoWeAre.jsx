@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function WhoWeAre() {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[60vh] items-center bg-gray-100 text-black px-6 md:px-12 lg:px-20 gap-8 py-12 bg-cover bg-center" style={{ backgroundImage: 'url(/images/otherImage/pngtree-business-earth-pattern-building-white-gray-technology-banner-image_804189.jpg)', backgroundAttachment: 'fixed' }}>
+    <section className="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[60vh] items-center bg-gray-100 text-black px-6 md:px-12 lg:px-20 gap-8 py-12 bg-cover bg-center" style={{ backgroundImage: 'url(/images/otherImage/minimalist-circuit-board-design-white-background-3d-rendering_670147-115241.avif)', backgroundAttachment: 'fixed' }}>
       
       {/* Left Side - Image Section */}
       <div className="flex justify-center items-center">

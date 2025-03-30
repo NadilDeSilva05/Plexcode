@@ -10,7 +10,7 @@ const Hero = () => {
   const subtextRef = useRef(null);
   const ctaRef = useRef(null);
   const [typedText, setTypedText] = useState('');
-  const fullText = "WE BUILD DIGITAL WARRIORS FOR THE TECH BATTLEGROUND";
+  const fullText = "WE BUILD DIGITAL WARRIORS FOR THE TECH BATTLEGROUND...";
   const typingSpeed = 30; // milliseconds per character
 
   useEffect(() => {
@@ -97,7 +97,7 @@ const Hero = () => {
 
         <p 
           ref={subtextRef}
-          className="mt-6 text-lg sm:text-xl md:text-xl font-medium text-gray-300 max-w-3xl mx-auto min-h-[3rem] flex justify-center items-center"
+          className="mt-6 text-lg sm:text-xl md:text-xl font-medium text-gray-300 max-w-3xl mx-auto min-h-[3rem] flex justify-center items-center uppercase tracking-[0.1em]"
           style={{
             textShadow: '0 2px 4px rgba(0,0,0,0.5)',
           }}
