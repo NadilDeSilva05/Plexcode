@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowDownIcon } from '@heroicons/react/solid';
 
 const Hero = () => {
   const heroRef = useRef(null);
