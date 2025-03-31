@@ -1,119 +1,85 @@
-import React, { useState, useEffect } from "react";
-import { Facebook, Twitter, Dribbble } from "lucide-react";
+import { useEffect, useState } from "react";
+import { 
+  FaFacebookF, FaTwitter, FaLinkedinIn, FaPinterestP, FaArrowUp 
+} from "react-icons/fa";
 
-const Footer = () => {
+export default function Footer() {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Function to check if the scroll position is greater than 10%
-  const handleScroll = () => {
-    if (window.scrollY > window.innerHeight * 0.1) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
-
-  // Function to smoothly scroll to the top
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
+  // Show the button when scrolling down
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
     };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
+  // Custom smooth scroll to top with slower speed
+  const scrollToTop = () => {
+    const scrollDuration = 1000; // Duration in milliseconds (1 second)
+    const scrollStep = -window.scrollY / (scrollDuration / 15);
+    
+    const scrollInterval = setInterval(() => {
+      if (window.scrollY !== 0) {
+        window.scrollBy(0, scrollStep);
+      } else {
+        clearInterval(scrollInterval);
+      }
+    }, 15);
+  };
+
   return (
-    <footer className="relative bg-black text-white mt-10 overflow-hidden">
-      {/* Enhanced Multi-layered Sea Wave Animation */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180 h-24">
-        {/* First wave layer - Slow and deep */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 120"
-          className="w-full h-full absolute"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="rgba(0, 0, 0, 0.8)"
-            d="M0,96L48,85.3C96,75,192,53,288,53.3C384,53,480,75,576,96C672,117,768,139,864,133.3C960,128,1056,96,1152,85.3C1248,75,1344,85,1392,90.7L1440,96V0H0Z"
-            className="animate-[wave_20s_linear_infinite]"
-          ></path>
-        </svg>
-        
-        {/* Second wave layer - Medium speed */}
-        <svg
-          viewBox="0 0 1440 120"
-          className="w-full h-full absolute"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="rgba(0, 0, 0, 0.6)"
-            d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,58.7C672,64,768,96,864,106.7C960,117,1056,107,1152,96C1248,85,1344,75,1392,69.3L1440,64V0H0Z"
-            className="animate-[wave_15s_linear_infinite_reverse] opacity-80"
-          ></path>
-        </svg>
-        
-        {/* Third wave layer - Fast and surface-level */}
-        <svg
-          viewBox="0 0 1440 120"
-          className="w-full h-full absolute"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="rgba(0, 0, 0, 0.4)"
-            d="M0,32L48,37.3C96,43,192,53,288,69.3C384,85,480,107,576,101.3C672,96,768,64,864,48C960,32,1056,32,1152,42.7C1248,53,1344,75,1392,85.3L1440,96V0H0Z"
-            className="animate-[wave_10s_linear_infinite] opacity-90"
-          ></path>
-        </svg>
+    <div className="relative p-10 text-white bg-black">
+      <div className="absolute top-0 left-0 w-full h-[150px] bg-white rounded-b-[50%]" />
+      
+      
+      <div className="relative z-10 flex flex-col items-center justify-between md:flex-row md:items-start">
+
+        <div className="invisible w-full mt-8 md:w-1/2 md:mt-0">
+          <h2 className="mb-4 text-2xl font-bold">Quick Links</h2>
+          <ul className="space-y-2">
+            <li><a href="#" className="text-gray-300 hover:text-white">Home</a></li>
+            <li><a href="#" className="text-gray-300 hover:text-white">About</a></li>
+            <li><a href="#" className="text-gray-300 hover:text-white">Services</a></li>
+            <li><a href="#" className="text-gray-300 hover:text-white">Contact</a></li>
+          </ul>
+        </div>
       </div>
+      
+      {/* Footer Bottom */}
+      <div className="relative flex flex-col items-center justify-between px-6 mt-10 text-sm md:flex-row">
+        {/* Company Name on the Left */}
+        <div className="mb-4 font-semibold text-white md:mb-0">plexCode</div>
 
-      {/* Footer Content */}
-      <div className="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center relative z-10 gap-4">
-        {/* Left - Company Name */}
-        <h2 className="text-xl font-bold">plexCode</h2>
-
-        {/* Center - Social Icons */}
-        <div className="flex space-x-6">
-          <Facebook className="w-5 h-5 cursor-pointer hover:text-gray-400 transition-colors" />
-          <Twitter className="w-5 h-5 cursor-pointer hover:text-gray-400 transition-colors" />
-          <Dribbble className="w-5 h-5 cursor-pointer hover:text-gray-400 transition-colors" />
+        {/* Social Media Icons in the Center */}
+        <div className="flex justify-center gap-4 mb-4 text-lg md:mb-0">
+          <a href="#" className="text-white"><FaLinkedinIn /></a>
+          <a href="#" className="text-white"><FaPinterestP /></a>
+          <a href="#" className="text-white"><FaFacebookF /></a>
+          <a href="#" className="text-white"><FaTwitter /></a>
         </div>
 
-        {/* Right - Copyright */}
-        <p className="text-sm opacity-75">© COPYRIGHT {new Date().getFullYear()} BY PLEXCODE</p>
+        {/* Copyright Text on the Right */}
+        <div className="text-sm text-center text-white md:text-right">
+          &copy; {new Date().getFullYear()} plexCode. All Rights Reserved
+        </div>
       </div>
 
       {/* Scroll to Top Button */}
       {isVisible && (
-        <div
-          className="fixed lg:bottom-16 bottom-4 right-4 w-[50px] h-[50px] flex justify-center items-center z-50 cursor-pointer"
-          onClick={scrollToTop}
+        <button 
+          onClick={scrollToTop} 
+          className="fixed p-3 text-white transition-all duration-300 bg-black rounded-full shadow-lg bottom-24 right-6 hover:bg-gray-800"
+          aria-label="Scroll to top"
         >
-          <div className="bg-black text-white p-3 h-[50px] w-[50px] rounded-full shadow-lg hover:bg-gray-600 transition duration-300 flex justify-center items-center">
-            {/* Upward Arrow Icon (Material Design) */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="currentColor"
-              className="bi bi-arrow-up-circle"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M8 12a.5.5 0 0 1-.5-.5V3.707l-3.146 3.147a.5.5 0 0 1-.708-.707L8 2.707l4.854 4.854a.5.5 0 0 1-.708.707L8.5 3.707V11.5a.5.5 0 0 1-.5.5z"
-              />
-            </svg>
-          </div>
-        </div>
+          <FaArrowUp size={15} />
+        </button>
       )}
-    </footer>
+    </div>
   );
-};
-
-export default Footer;
+}
