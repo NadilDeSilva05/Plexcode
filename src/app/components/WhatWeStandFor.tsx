@@ -8,7 +8,7 @@ export default function WhatWeStandFor() {
   const [selected, setSelected] = useState("Creativity Without Limits");
 
   const images: Record<string, string> = {
-    "Creativity Without Limits":"/images/otherImage/1701601716842.jpeg",
+    "Creativity Without Limits":"/images/otherImage/left-right-brain-functions-conceptyt-600nw-302933039.jpg",
     "Strategic Excellence": "/images/otherImage/arts-education-STEAM.jpeg",
     "Client Collaboration": "/images/otherImage/istockphoto-1412778148-612x612.jpg",
   };
