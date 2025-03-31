@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 py-2 shadow-lg' : 'bg-transparent py-4'}`}>
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="container flex items-center justify-between px-4 mx-auto">
         {/* Logo with animation */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -50,7 +50,7 @@ const Navbar = () => {
         </motion.div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="items-center hidden space-x-6 md:flex">
           {navItems.map((item, index) => (
             <motion.div
               key={item.path}
@@ -72,7 +72,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <motion.button
-          className="md:hidden p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 "
+          className="p-1 rounded-md md:hidden focus:outline-none focus:ring-2 focus:ring-gray-500 "
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -93,9 +93,9 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-black/95 backdrop-blur-sm mt-1 "
+            className="mt-1 overflow-hidden md:hidden bg-black/95 backdrop-blur-sm "
           >
-            <div className="flex flex-col items-center space-y-6 py-6 px-4">
+            <div className="flex flex-col items-center px-4 py-6 space-y-6">
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.path}

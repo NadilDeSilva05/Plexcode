@@ -8,18 +8,17 @@ export default function WhatWeStandFor() {
   const [selected, setSelected] = useState("Creativity Without Limits");
 
   const images: Record<string, string> = {
-    "Creativity Without Limits":
-      "/images/otherImage/left-right-brain-functions-concept-600nw-302933039.jpg",
+    "Creativity Without Limits":"/images/otherImage/1701601716842.jpeg",
     "Strategic Excellence": "/images/otherImage/arts-education-STEAM.jpeg",
     "Client Collaboration": "/images/otherImage/istockphoto-1412778148-612x612.jpg",
   };
 
   return (
-    <section className="w-full bg-white dark:bg-black py-16 px-6 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+    <section className="w-full px-6 py-16 transition-colors duration-300 bg-white dark:bg-black">
+      <div className="flex flex-col items-center max-w-6xl gap-12 mx-auto md:flex-row">
         {/* Left Section */}
         <div className="w-full md:w-1/2">
-          <h2 className="text-center md:text-left text-3xl md:text-4xl font-light tracking-widest uppercase text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl font-light tracking-widest text-center text-gray-900 uppercase md:text-left md:text-4xl dark:text-gray-100">
             What <span className="font-bold">We Stand For</span>
           </h2>
 
@@ -57,7 +56,7 @@ export default function WhatWeStandFor() {
         </div>
 
         {/* Right Section - Smooth Image Change */}
-        <div className="w-full md:w-1/2 relative">
+        <div className="relative w-full md:w-1/2">
           <motion.div
             layoutId="image"
             className="w-full h-full"
