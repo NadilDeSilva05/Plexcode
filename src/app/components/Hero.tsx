@@ -10,7 +10,7 @@ const HeroSection = () => {
   const subtextRef = useRef(null);
   const ctaRef = useRef(null);
   const [typedText, setTypedText] = useState('');
-  const fullText = "WE BUILD DIGITAL WARRIORS FOR THE TECH BATTLEGROUND...";
+  const fullText = "WE BUILD DIGITAL WARRIORS FOR THE TECH BATTLEGROUND......";
   const typingSpeed = 30;
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const HeroSection = () => {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="relative z-10 max-w-2xl">
+      <div className="relative z-10 max-w-2xl text-center lg:text-left">
         <h1 
           ref={headingRef}
           className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] to-[#5b5957] mb-6 tracking-widest animate-fadeIn"
