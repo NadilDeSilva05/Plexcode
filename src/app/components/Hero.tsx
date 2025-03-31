@@ -75,7 +75,7 @@ const HeroSection = () => {
       <div className="relative z-10 max-w-2xl text-center lg:text-left">
         <h1 
           ref={headingRef}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] to-[#5b5957] mb-6 tracking-widest animate-fadeIn"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] to-[#000000] mb-6 tracking-widest animate-fadeIn"
         >
           PlexCode
         </h1>

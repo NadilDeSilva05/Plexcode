@@ -61,17 +61,17 @@ export default function Home() {
   return (
     <>
       {loading ? (
-        <div className="fixed inset-0 flex items-center justify-center bg-black text-white z-50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center text-white bg-black">
           {/* Desktop Version (hidden on mobile) */}
           <div 
-            className="hidden md:block text-center w-full px-4 overflow-hidden"
+            className="hidden w-full px-4 overflow-hidden text-center md:block"
             style={{
               fontSize: 'clamp(24px, 8vw, 64px)' // Responsive font size
             }}
           >
             {visibleText ? (
               <div 
-                className="whitespace-nowrap inline-block"
+                className="inline-block whitespace-nowrap"
                 dangerouslySetInnerHTML={{ __html: visibleText }}
               />
             ) : showDomain ? (
@@ -81,7 +81,7 @@ export default function Home() {
 
           {/* Mobile Version (hidden on desktop) */}
           <div 
-            className="md:hidden text-center w-full px-4"
+            className="w-full px-4 text-center md:hidden"
           >
             <div className="flex flex-col items-center space-y-3">
               {visibleLines.map((line, index) => (
@@ -100,14 +100,14 @@ export default function Home() {
             </div>
             
             {showDomain && visibleLines.length === 0 && (
-              <p className="text-lg font-light opacity-75 animate-fade-in mt-4">
+              <p className="mt-4 text-lg font-light opacity-75 animate-fade-in">
                 plexCode.com
               </p>
             )}
           </div>
         </div>
       ) : (
-            <div className="mainContent delay-500">
+            <div className="delay-500 mainContent">
             <Navbar />
             <Hero />
             <InnovationSections />
