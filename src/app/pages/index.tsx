@@ -10,6 +10,8 @@ import WhatWeStandFor from '../components/WhatWeStandFor';
 import Banner from '../components/Banner';
 import ServicesSection from "../components/ServicesSection";
 import Gallery from "../components/Gallery";
+import FreelanceSection from "../components/FreelanceSection";
+
 import Footer from "../components/Footer";
 
 
@@ -116,6 +118,7 @@ export default function Home() {
             <Banner/>
             <ServicesSection />
             <Gallery />
+            <FreelanceSection />
             <Footer />
 
 
