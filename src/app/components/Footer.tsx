@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { 
-  FaFacebookF, FaTwitter, FaLinkedinIn, FaPinterestP, FaArrowUp 
-} from "react-icons/fa";
+
+import { FaLinkedinIn, FaFacebookF, FaWhatsapp, FaEnvelope,FaArrowUp } from "react-icons/fa";
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,8 +33,11 @@ export default function Footer() {
   };
 
   return (
-    <div className="relative p-10 text-white bg-black">
-      <div className="absolute top-0 left-0 w-full h-[150px] bg-white rounded-b-[50%]" />
+    <div 
+      className="relative p-10 text-white bg-fixed bg-black bg-center bg-cover"
+      style={{ backgroundImage: "url('/images/otherImage/945731-3840x2160-desktop-4k-matte-black-wallpaper-image.jpg')" }} // Update with your image path
+    >      
+    <div className="absolute top-0 left-0 w-full h-[150px] bg-white rounded-b-[50%]" />
       
       
       <div className="relative z-10 flex flex-col items-center justify-between md:flex-row md:items-start">
@@ -58,11 +60,19 @@ export default function Footer() {
 
         {/* Social Media Icons in the Center */}
         <div className="flex justify-center gap-4 mb-4 text-lg md:mb-0">
-          <a href="#" className="text-white"><FaLinkedinIn /></a>
-          <a href="#" className="text-white"><FaPinterestP /></a>
-          <a href="#" className="text-white"><FaFacebookF /></a>
-          <a href="#" className="text-white"><FaTwitter /></a>
-        </div>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white">
+              <FaLinkedinIn />
+            </a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-white">
+              <FaFacebookF />
+            </a>
+            <a href="https://wa.me/yourwhatsappnumber" target="_blank" rel="noopener noreferrer" className="text-white">
+              <FaWhatsapp />
+            </a>
+            <a href="mailto:youremail@example.com" className="text-white">
+              <FaEnvelope />
+            </a>
+          </div>
 
         {/* Copyright Text on the Right */}
         <div className="text-sm text-center text-white md:text-right">
